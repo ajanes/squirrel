@@ -11,10 +11,10 @@ defmodule SquirrelWeb.AnalysisView do
   end
 
   def render("analysis.json", %{analysis: analysis}) when not is_nil(analysis) do
-    %{result: analysis.object}
+    %{number_of_calls: analysis.number_of_calls, history: analysis.history}
   end
 
   def render("analysis.json", _) do
-    %{result: nil}
+    %{number_of_calls: 0, history: []}
   end
 end

@@ -1,26 +1,24 @@
 defmodule SquirrelWeb.AnalysisController do
   use SquirrelWeb, :controller
 
-  alias Squirrel.Analyses
+  alias Squirrel.Data
 
-  def compute(conn, _params) do
-    Analyses.compute()
+  action_fallback(SquirrelWeb.FallbackController)
 
-    conn
-    |> send_resp(200, "")
-  end
-
-  def read(conn, %{"subject" => subject, "predicate" => predicate}) do
+  def read_analysis(conn, %{
+        "topic" => topic,
+        "subject" => subject,
+        "predicate" => predicate,
+        "source" => _source,
+        "days" => days,
+        "bars" => bars
+      }) do
     predicate_as_integer = String.to_integer(predicate)
-    analyses = Analyses.get_analyses(subject, predicate_as_integer)
+    days_as_integer = String.to_integer(days)
+    bars_as_integer = String.to_integer(bars)
 
-    conn
-    |> render("index.json", analyses: analyses)
-  end
-
-  def read_one(conn, %{"subject" => subject, "predicate" => predicate}) do
-    predicate_as_integer = String.to_integer(predicate)
-    analysis = Analyses.get_analysis(subject, predicate_as_integer)
+    analysis =
+      Data.get_analysis(topic, subject, predicate_as_integer, days_as_integer, bars_as_integer)
 
     conn
     |> render("analysis.json", analysis: analysis)

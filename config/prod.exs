@@ -16,10 +16,13 @@ use Mix.Config
 config :squirrel, SquirrelWeb.Endpoint,
   # force_ssl: [hsts: true],
   http: [port: 80],
-  # https: [:inet6,
-  #   port: 443,
-  #   keyfile: "/etc/ssl/private/squirrel2018.key",
-  #   certfile: "/etc/ssl/private/squirrel_inf_unibz_it_2991353/squirrel_2018.pem"],
+  https: [
+    :inet6,
+    port: 443,
+    keyfile: "/etc/ssl/private/squirrel2018.key",
+    certfile: "/etc/ssl/private/squirrel_inf_unibz_it_2991353/squirrel_2018.pem"
+  ],
+  debug_errors: true,
   url: [host: "squirrel.inf.unibz.it", port: 80],
   cache_static_manifest: "priv/static/cache_manifest.json",
   server: true,

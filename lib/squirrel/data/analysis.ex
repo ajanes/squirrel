@@ -1,4 +1,4 @@
-defmodule Squirrel.Analyses.Analysis do
+defmodule Squirrel.Data.Analysis do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -8,6 +8,9 @@ defmodule Squirrel.Analyses.Analysis do
     field(:subject, :string)
     field(:predicate, :integer)
     field(:object, :map)
+    field(:topic, :binary_id)
+    field(:expires_at, :naive_datetime)
+    field(:is_persisted, :boolean, virtual: true)
 
     timestamps()
   end
@@ -15,7 +18,7 @@ defmodule Squirrel.Analyses.Analysis do
   @doc false
   def changeset(analysis, attrs) do
     analysis
-    |> cast(attrs, [:subject, :predicate, :object])
+    |> cast(attrs, [:expires_at, :is_persisted, :object, :predicate, :subject, :topic])
     |> validate_required([:subject, :predicate])
   end
 end

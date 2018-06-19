@@ -1,6 +1,10 @@
 defmodule SquirrelWeb.ErrorView do
   use SquirrelWeb, :view
 
+  def render("401.html", _assigns) do
+    "Unauthorized"
+  end
+
   def render("404.html", _assigns) do
     "Page not found"
   end

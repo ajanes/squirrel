@@ -4,8 +4,8 @@ defmodule Squirrel.Mixfile do
   def project do
     [
       app: :squirrel,
-      version: "0.0.42",
-      elixir: "~> 1.4",
+      version: "0.0.55",
+      elixir: "~> 1.6",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,

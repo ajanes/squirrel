@@ -23,9 +23,15 @@ defmodule SquirrelWeb.Router do
   scope "/api", SquirrelWeb do
     pipe_through(:api)
 
-    put("/write", DataController, :write)
-    get("/read", AnalysisController, :read)
-    get("/read_one", AnalysisController, :read_one)
-    get("/compute", AnalysisController, :compute)
+    put("/write", DataController, :add_facts)
+    get("/read", AnalysisController, :read_analysis)
+
+    get("/show", DataController, :show_facts)
+    get("/statistics", DataController, :show_statistics)
+
+    get("/persist", DataController, :persist)
+    get("/reload", DataController, :reload)
+
+    get("/clear", DataController, :clear)
   end
 end

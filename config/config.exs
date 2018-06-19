@@ -8,7 +8,8 @@ use Mix.Config
 # General application configuration
 config :squirrel,
   ecto_repos: [Squirrel.Repo],
-  generators: [binary_id: true]
+  generators: [binary_id: true],
+  default_expiry_period_in_days: 30
 
 # Configures the endpoint
 config :squirrel, SquirrelWeb.Endpoint,

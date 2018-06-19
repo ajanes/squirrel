@@ -1,11 +1,9 @@
 # Squirrel
 
-Squirrel is a web server to collect and distribute data. It provides four methods:
+Squirrel is a web server to collect and distribute data. It provides two methods:
 
-  * /api/write: stores a call of a method
-  * /api/read: retrieves all data present in the system
-  * /api/read_one: retrieves the number of records collected for a given method
-  * /api/compute: invokes an analysis, in this initial version it just aggregates the collected data counting it per method
+  * /api/write: stores data
+  * /api/read: reads data
 
 ## How to run squirrel
 

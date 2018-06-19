@@ -9,6 +9,10 @@ defmodule Squirrel.Data.Fact do
     field(:predicate, :integer)
     field(:object, :map)
     field(:source, :binary_id)
+    field(:topic, :binary_id)
+    field(:received_at, :naive_datetime)
+    field(:expires_at, :naive_datetime)
+    field(:is_persisted, :boolean, virtual: true)
 
     timestamps()
   end
@@ -16,7 +20,16 @@ defmodule Squirrel.Data.Fact do
   @doc false
   def changeset(fact, attrs) do
     fact
-    |> cast(attrs, [:subject, :predicate, :object, :source])
-    |> validate_required([:subject, :predicate, :source])
+    |> cast(attrs, [
+      :expires_at,
+      :is_persisted,
+      :object,
+      :predicate,
+      :received_at,
+      :source,
+      :subject,
+      :topic
+    ])
+    |> validate_required([:subject, :predicate, :source, :topic])
   end
 end
